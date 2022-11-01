@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+ 
+    <head>
+
+        <link rel="stylesheet" href="style.css">
+</head>
+<div>
+    <div style="width:90% ;height: 500px;margin-left: 4%;margin-top: 3%;  " class="coloreddiv">
+     
+    
+        <div style="width:80% ;height: 150px; background-color: gainsboro; margin-top: 10px;margin-left: 20px;">
+   
+
+  <div>
+    rgb(<span class="RadialProgress"></span>,<span class="RadialProgress2"></span>,<span class="RadialProgress3"></span>)
+   
+  </div>
+  <br>
+  <input type="range" value="25" min="0" max="255" class="progesred"/>
+
+   
+  
+  <input type="range" value="25" min="0" max="255" class="progesgreen" />
+
+  
+
+  
+  <input type="range" value="25" min="0" max="255"  class="progesblu"/>
+</div>
+</div>
+  <script>
+
+    
+
+const colordiv = document.querySelector('.coloreddiv');
+
+const controller = document.querySelector('.progesred');
+const radialProgress = document.querySelector('.RadialProgress');
+
+const controller2 = document.querySelector('.progesgreen');
+const radialProgress2 = document.querySelector('.RadialProgress2');
+
+const controller3 = document.querySelector('.progesblu');
+const radialProgress3 = document.querySelector('.RadialProgress3');
+
+const setProgress = (progress) => {
+  const value = `${progress}`;
+  radialProgress.style.setProperty('--progress', value)
+  radialProgress.innerHTML = value
+  radialProgress.setAttribute('aria-valuenow', value)
+ colordiv.style.backgroundColor='rgb(' + value + ',' + controller2.value + ',' + controller3.value + ')';
+}
+
+setProgress(controller.value)
+controller.oninput = () => {
+  setProgress(controller.value)
+}
+
+
+
+const setProgress2 = (progress) => {
+  const value = `${progress}`;
+  radialProgress2.style.setProperty('--progress', value)
+  radialProgress2.innerHTML = value
+  radialProgress2.setAttribute('aria-valuenow', value)
+  
+ colordiv.style.backgroundColor='rgb(' + controller.value + ',' + value + ',' + controller3.value + ')';
+}
+
+setProgress2(controller2.value)
+controller2.oninput = () => {
+  setProgress2(controller2.value)
+}
+
+
+
+
+
+const setProgress3 = (progress) => {
+  const value = `${progress}`;
+  radialProgress3.style.setProperty('--progress', value)
+  radialProgress3.innerHTML = value
+  radialProgress3.setAttribute('aria-valuenow', value)
+  
+ colordiv.style.backgroundColor='rgb(' + controller.value + ',' + controller2.value  + ',' + value+ ')';
+}
+
+setProgress3(controller3.value)
+controller3.oninput = () => {
+  setProgress3(controller3.value)
+}
+
+
+  </script>
+</body>
+
+  
+</html>
